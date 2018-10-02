@@ -450,3 +450,96 @@ console.log(isDesigner);
     
 // }
 
+//////////////coding challenge 5--tip calculator//////////////
+var john = {
+    fullName: 'john smith',
+    bills: [124, 48, 268, 180, 42],
+    calcTips: function() {
+        this.tips = [];
+        this.finalvalues = [];
+
+        for (var i = 0; i < this.bills.length; i++)
+            {
+                // determine percentage based on tipping rules
+                var percentage;
+                var bill = this.bills[i];
+                
+                if (bill < 50) {
+                    percentage = .2;
+                } else if(bill >= 50 && bill < 200) {
+                    percentage = .15;
+                } else {
+                    percentage = .1;
+                }
+
+                // add result to the arrays
+                this.tips[i] = bill * percentage;
+                this.finalvalues[i] = bill + bill * percentage;
+            }
+    }
+}
+
+john.calcTips();
+console.log(john);
+
+
+
+var mark = {
+    fullName: 'mark miller',
+    bills: [77, 475, 110, 45],
+    calcTips: function() {
+        this.tips = [];
+        this.finalvalues = [];
+
+        for (var i = 0; i < this.bills.length; i++)
+            {
+                // determine percentage based on tipping rules
+                var percentage;
+                var bill = this.bills[i];
+                
+                if (bill < 100) {
+                    percentage = .2;
+                } else if(bill >= 100 && bill < 300) {
+                    percentage = .15;
+                } else {
+                    percentage = .1;
+                }
+
+                // add result to the arrays
+                this.tips[i] = bill * percentage;
+                this.finalvalues[i] = bill + bill * percentage;
+            }
+    }
+}
+
+function calcAverage(tips) {
+    var sum = 0;
+    for (var i = 0; i < tips.length; i ++) {
+        sum = sum + tips[i];
+    }
+    return sum / tips.length;
+}
+
+mark.calcTips();
+
+
+john.average = calcAverage(john.tips);
+mark.average = calcAverage(mark.tips);
+
+console.log(john, mark);
+
+if (john.average > mark.average) {
+    console.log(john.fullName + "pays higher tips with an average of $" + john.average);
+    
+} else if (mark.average > john.average) {
+    
+    console.log(mark.fullName + " pays higher tips with an average of $" + mark.average);
+    
+    
+}
+
+
+
+
+
+
